@@ -81,9 +81,10 @@ fn main() {
     println!("Found {} gates & {} wires", gate_count, wire_count);
 
     let tokens: Vec<&str> = lines[1].split(" ").collect();
+    // println!("{:?}", tokens);
     let gb_input_count: usize = usize::from_str(tokens[0]).unwrap();
     let ev_input_count: usize = usize::from_str(tokens[1]).unwrap();
-    let output_count: usize = usize::from_str(tokens[2]).unwrap();
+    let output_count: usize = usize::from_str(tokens[4]).unwrap();
     println!("Found {} gb_inputs & {} ev_inputs -> {} outputs", gb_input_count, ev_input_count, output_count);
     // Run the circuit
     let mut circ = circuit(circ_fname);
