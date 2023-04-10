@@ -75,20 +75,17 @@ fn main() {
     // Open the circuit file to get inputs
     let reader = BufReader::new(File::open(circ_fname).unwrap());
     let lines: Vec<String> = reader.lines().collect::<Result<_, _>>().unwrap();
+    let tokens: Vec<&str> = lines[0].split(" ").collect();
+    let gate_count: usize = usize::from_str(tokens[0]).unwrap();
+    let wire_count: usize = usize::from_str(tokens[1]).unwrap();
+    println!("Found {} gates & {} wires", gate_count, wire_count);
+
     let tokens: Vec<&str> = lines[1].split(" ").collect();
     let gb_input_count: usize = usize::from_str(tokens[0]).unwrap();
     let ev_input_count: usize = usize::from_str(tokens[1]).unwrap();
-    println!("Found {} gb_inputs & {} ev_inputs", gb_input_count, ev_input_count);
+    let output_count: usize = usize::from_str(tokens[2]).unwrap();
+    println!("Found {} gb_inputs & {} ev_inputs -> {} outputs", gb_input_count, ev_input_count, output_count);
     // Run the circuit
     let mut circ = circuit(circ_fname);
     run_circuit(&mut circ, vec![0; gb_input_count], vec![0; ev_input_count]);
-
-    // let mut circ = circuit("circuits/adder_32bit.txt");
-    // run_circuit(&mut circ, vec![0; 32], vec![0; 32]);
-    // let mut circ = circuit("circuits/AES-non-expanded.txt");
-    // run_circuit(&mut circ, vec![0; 128], vec![0; 128]);
-    // let mut circ = circuit("circuits/sha-1.txt");
-    // run_circuit(&mut circ, vec![0; 512], vec![]);
-    // let mut circ = circuit("circuits/sha-256.txt");
-    // run_circuit(&mut circ, vec![0; 512], vec![]);
 }
