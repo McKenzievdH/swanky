@@ -138,7 +138,7 @@ fn bench_garble_k6(c: &mut Criterion) {
 fn bench_eval_k6(c: &mut Criterion) {
     let circ = circuit("../../TFHE_repo/Garbled/circuits/strm_join/k6_v1_n1.txt");
     let (en, gc) = garble::<WireMod2, _>(&circ).unwrap();
-    let gb = en.encode_garbler_inputs(&vec![0u16; 87]);
+    let gb = en.encode_garbler_inputs(&vec![0u16; 23]);
     let ev = en.encode_evaluator_inputs(&vec![]);
     c.bench_function("eval::strm_join_k6", move |bench| {
         bench.iter(|| gc.eval(&circ, &gb, &ev));
@@ -153,7 +153,7 @@ fn bench_garble_k7(c: &mut Criterion) {
 fn bench_eval_k7(c: &mut Criterion) {
     let circ = circuit("../../TFHE_repo/Garbled/circuits/strm_join/k7_v1_n2.txt");
     let (en, gc) = garble::<WireMod2, _>(&circ).unwrap();
-    let gb = en.encode_garbler_inputs(&vec![0u16; 87]);
+    let gb = en.encode_garbler_inputs(&vec![0u16; 52]);
     let ev = en.encode_evaluator_inputs(&vec![]);
     c.bench_function("eval::strm_join_k7", move |bench| {
         bench.iter(|| gc.eval(&circ, &gb, &ev));
@@ -183,7 +183,7 @@ fn bench_garble_k9(c: &mut Criterion) {
 fn bench_eval_k9(c: &mut Criterion) {
     let circ = circuit("../../TFHE_repo/Garbled/circuits/strm_join/k9_v1_n6.txt");
     let (en, gc) = garble::<WireMod2, _>(&circ).unwrap();
-    let gb = en.encode_garbler_inputs(&vec![0u16; 87]);
+    let gb = en.encode_garbler_inputs(&vec![0u16; 188]);
     let ev = en.encode_evaluator_inputs(&vec![]);
     c.bench_function("eval::strm_join_k9", move |bench| {
         bench.iter(|| gc.eval(&circ, &gb, &ev));
@@ -198,7 +198,7 @@ fn bench_garble_k10(c: &mut Criterion) {
 fn bench_eval_k10(c: &mut Criterion) {
     let circ = circuit("../../TFHE_repo/Garbled/circuits/strm_join/k10_v1_n11.txt");
     let (en, gc) = garble::<WireMod2, _>(&circ).unwrap();
-    let gb = en.encode_garbler_inputs(&vec![0u16; 87]);
+    let gb = en.encode_garbler_inputs(&vec![0u16; 373]);
     let ev = en.encode_evaluator_inputs(&vec![]);
     c.bench_function("eval::strm_join_k10", move |bench| {
         bench.iter(|| gc.eval(&circ, &gb, &ev));
